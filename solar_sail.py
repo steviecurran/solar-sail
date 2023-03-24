@@ -20,6 +20,9 @@ AU  = float(input("\nLaunch distance from Sun in AU [e.g. 1 for Earth orbit]?  "
 d = float(input("Distance to travel in light-years [e.g. 4.22 for Proxima Centauri]? "))
 m = float(input("Total mass of sail + payload in kg? "))
 A = float(input("Area of sail in metre squared [e.g. 1e6]? "))
+b = float(input("Albedo of sail [b=0 to 1,totally absorbant to totally reflective]? ")) 
+while b < 0  or b > 1:
+    b = float(input("Albedo of sail [b=0 to 1,totally absorbant to totally reflective]? ")) 
 
 R = d*c*s2yr
 t = R**4*np.pi*m*c/(12*L*A)
@@ -27,7 +30,7 @@ gamma = 1
 t =0; v= 0;
 AU2m= 1.5e11
 r = AU*AU2m
-a_0 = L*A/(2*np.pi*gamma*m*c*r**2)
+a_0 = L*A*b/(2*np.pi*gamma*m*c*r**2)
 r_0 = r
 
 array = [];  # FOR PLOT
@@ -35,7 +38,7 @@ array = [];  # FOR PLOT
 for i in range(npts*step):
     dt = float(i)/step  # MUCH QUICKER AND FINE REOLUTION AT START (~ s), WHERE IT'S NEEDED
     #dt = float(npts)/step
-    a = L*A/(2*np.pi*gamma*m*c*r**2)
+    a = L*A*b/(2*np.pi*gamma*m*c*r**2)
     v = v+a*dt
     gamma = (1-(v/c)**2)**-0.5
     r = r+(v*dt)
@@ -47,7 +50,7 @@ for i in range(npts*step):
          break
 
 print("-------------------------------------------------------------------------------------------")
-print("   For A = %1.1e m^2, m = %1.1f kg, launching from %1.1f AU, initial acc = %1.2f m/s^2 " %(A,m,AU,a_0))
+print("   For A = %1.1e m^2, , b = %1.1f, m = %1.1f kg, launching from %1.1f AU, initial acc = %1.2f m/s^2 " %(A,m,AU,a_0))
 print("   To travel %1.3f ly [%1.3e m] takes t = %1.1f yr [%1.2e s],\n    where final a = %1.3e m/s^2 and v = %1.0f km/s [%1.4fc]" %(r/ly,r,t/s2yr,t,a,v*1e-3,v/c))
 print("-------------------------------------------------------------------------------------------")
 
