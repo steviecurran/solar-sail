@@ -20,9 +20,9 @@ AU  = float(input("\nLaunch distance from Sun in AU [e.g. 1 for Earth orbit]?  "
 d = float(input("Distance to travel in light-years [e.g. 4.22 for Proxima Centauri]? "))
 m = float(input("Total mass of sail + payload in kg? "))
 A = float(input("Area of sail in metre squared [e.g. 1e6]? "))
-b = float(input("Albedo of sail [b=0 to 1,totally absorbant to totally reflective]? ")) 
+b = float(input("Albedo of sail [b = 0 to 1,totally absorbant to totally reflective]? ")) 
 while b < 0  or b > 1:
-    b = float(input("Albedo of sail [b=0 to 1,totally absorbant to totally reflective]? ")) 
+    b = float(input("Albedo of sail [b = 0 to 1,totally absorbant to totally reflective]? ")) 
 
 R = d*c*s2yr
 t = R**4*np.pi*m*c/(12*L*A)
