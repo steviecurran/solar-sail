@@ -50,7 +50,7 @@ for i in range(npts*step):
          break
 
 print("-------------------------------------------------------------------------------------------")
-print("   For A = %1.1e m^2, , b = %1.1f, m = %1.1f kg, launching from %1.1f AU, initial acc = %1.2f m/s^2 " %(A,m,AU,a_0))
+print("   For A = %1.1e m^2, , b = %1.1f, m = %1.1f kg, launching from %1.1f AU, initial acc = %1.2f m/s^2 " %(A,b,m,AU,a_0))
 print("   To travel %1.3f ly [%1.3e m] takes t = %1.1f yr [%1.2e s],\n    where final a = %1.3e m/s^2 and v = %1.0f km/s [%1.4fc]" %(r/ly,r,t/s2yr,t,a,v*1e-3,v/c))
 print("-------------------------------------------------------------------------------------------")
 
